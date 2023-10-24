@@ -1,7 +1,10 @@
-self.addEventListener("push", async (event) => {
-  const { title, body } = await event.data.json();
-  console.log(title, body);
-  self.registration.showNotification(title, {
-    body,
+self.addEventListener("push", function (event) {
+    const options = {
+      body: "My first notification on iOS",
+    };
+  
+    event.waitUntil(
+      self.registration.showNotification("Hello World", options)
+    );
   });
-});
+  
